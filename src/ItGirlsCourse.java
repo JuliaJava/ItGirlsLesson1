@@ -4,6 +4,7 @@ public class ItGirlsCourse {
     public static void main(String[] args) {
         User zeroUser = new User("Vitold", "vitold@gmail.com");
         User secondUser = new User("Bonie", "bonie@gmail.com");
+        User thirdUser = new User("Uniq", "uniq@gmail.com");
 
         zeroUser.addFollower();
         zeroUser.addFollower();
