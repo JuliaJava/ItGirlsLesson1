@@ -16,7 +16,7 @@ public class Post {
     }
 
     public void displayPost() {
-        System.out.println(author.userName + " posted: " + content);
+        System.out.println(author.getUserName() + " posted: " + content);
         System.out.println("Likes: " + likes);
     }
 }

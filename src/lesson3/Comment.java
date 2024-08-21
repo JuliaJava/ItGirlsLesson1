@@ -11,7 +11,7 @@ public class Comment {
     }
 
     public void displayComment() {
-        System.out.println(author.userName + " commented: " + text);
+        System.out.println(author.getUserName() + " commented: " + text);
     }
 
 }
