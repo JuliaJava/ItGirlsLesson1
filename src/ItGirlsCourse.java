@@ -1,10 +1,12 @@
+import lesson3.Comment;
+import lesson3.Post;
 import lesson3.User;
 
 public class ItGirlsCourse {
+
     public static void main(String[] args) {
         User zeroUser = new User("Vitold", "vitold@gmail.com");
         User secondUser = new User("Bonie", "bonie@gmail.com");
-        User thirdUser = new User("Uniq", "uniq@gmail.com");
 
         zeroUser.addFollower();
         zeroUser.addFollower();
@@ -13,8 +15,16 @@ public class ItGirlsCourse {
         zeroUser.printDetails();
         secondUser.printDetails();
 
+        Post post1 = new Post("Hello, world!", zeroUser);
+        Comment comment1 = new Comment("Nice post!", secondUser);
+        post1.addLike();
+        post1.addLike();
+        post1.displayPost();
+        comment1.displayComment();
+
         User.printCountOfFollowersForAllUsers();
-        //написать классы Post и Comment, добавить в них свойства(переменные) и методы (на ваше усмотрение, не забываем про static)
-        // в методе main() вызвать методы и поработать с переменными объектов и классов
+
     }
+
+
 }
