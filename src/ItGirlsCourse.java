@@ -13,8 +13,8 @@ public class ItGirlsCourse {
         zeroUser.addFollower();
         zeroUser.addFollower();
         secondUser.addFollower();
-
-        zeroUser.getMail();
+        secondUser.addFollower();
+        System.out.println(zeroUser.getMail());
         zeroUser.setUserName("kljdf");
 
         System.out.println(zeroUser.getUserName());
