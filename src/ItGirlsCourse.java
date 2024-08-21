@@ -12,6 +12,7 @@ public class ItGirlsCourse {
         zeroUser.addFollower();
         secondUser.addFollower();
 
+
         zeroUser.printDetails();
         secondUser.printDetails();
 
