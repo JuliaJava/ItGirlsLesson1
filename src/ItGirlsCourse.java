@@ -15,7 +15,7 @@ public class ItGirlsCourse {
         secondUser.addFollower();
         secondUser.addFollower();
         System.out.println(zeroUser.getMail());
-        zeroUser.setUserName("kljdf");
+        zeroUser.setUserName("sdfsdf");
 
         System.out.println(zeroUser.getUserName());
         System.out.println(zeroUser);
