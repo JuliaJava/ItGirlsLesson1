@@ -1,7 +1,7 @@
-import lesson3.Admin;
-import lesson3.Comment;
-import lesson3.Post;
-import lesson3.User;
+import itGirlsSchool.models.Admin;
+import itGirlsSchool.models.Comment;
+import itGirlsSchool.models.Post;
+import itGirlsSchool.models.User;
 
 public class ItGirlsCourse {
 
@@ -9,7 +9,7 @@ public class ItGirlsCourse {
         User zeroUser = new User("Vitold", "vitold@gmail.com", "649854");
         User secondUser = new User("Bonie", "bonie@gmail.com", "967865");
 
-        Admin admin = new Admin("Admin", "admin");
+        Admin admin = new Admin("Admin", "admin", "admin@admin.com");
         zeroUser.addFollower();
         zeroUser.addFollower();
         secondUser.addFollower();
@@ -29,15 +29,19 @@ public class ItGirlsCourse {
         post1.displayPost();
         comment1.displayComment();
 
-        System.out.println("Admin " + admin.name + "has password " + admin.password);
+        System.out.println("Admin " + admin.getUserName() + "has password " + admin.getPassword());
         zeroUser.setNewPassword("1");
         zeroUser.printDetails();
         admin.setNewPassword("admin1");
-        System.out.println("Admin " + admin.name + "has password " + admin.password);
         System.out.println(admin.checkPassword("admin1"));
         System.out.println(zeroUser.checkPassword("34234"));
         User.printCountOfFollowersForAllUsers();
 
+        System.out.println();
+        System.out.println();
+
+        secondUser.sendMessage("Привет!!!");
+        admin.sendMessage("Всех удалю!!!");
 
     }
 

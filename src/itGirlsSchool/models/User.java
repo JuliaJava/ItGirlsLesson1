@@ -1,20 +1,21 @@
-package lesson3;
+package itGirlsSchool.models;
 
-import lesson3.interfaces.AuthorizationInterface;
+import itGirlsSchool.interfaces.AuthorizationInterface;
 
-public class User implements AuthorizationInterface {
+public class User extends SocialMediaUser implements AuthorizationInterface {
+
     public static int countOfFollowerForAllUsers;
-    private String userName;
-    private String password;
-    private String mail;
     private int countOfFollowers;
+    private Group group;
 
     public User(String userName, String mail, String password) {
-        this.userName = userName;
-        this.mail = mail;
-        this.password = password;
+        super(userName, password, mail);
     }
 
+    @Override
+    public void sendMessage(String message) {
+        System.out.println(getUserName() + " sent message: " + message);
+    }
 
     public int addFollower() {
         countOfFollowerForAllUsers++;
@@ -22,10 +23,10 @@ public class User implements AuthorizationInterface {
     }
 
     public void printDetails() {
-        System.out.println("User full name: " + userName);
-        System.out.println("Email: " + mail);
+        System.out.println("User full name: " + getUserName());
+        System.out.println("Email: " + getMail());
         System.out.println("Count of followers:" + countOfFollowers);
-        System.out.println("Password:" + password);
+        System.out.println("Password:" + getPassword());
     }
 
     public static void printCountOfFollowersForAllUsers() {
@@ -33,14 +34,14 @@ public class User implements AuthorizationInterface {
     }
 
     private boolean isPasswordCorrect(String password) {
-        boolean isPasswordCorrect = this.password.equals(password);
+        boolean isPasswordCorrect = getPassword().equals(password);
         return isPasswordCorrect;
     }
 
     @Override
     public void setNewPassword(String password) {
-        this.password = password;
-        System.out.println("User " + this.userName + " set new password successfully");
+        setPassword(password);
+        System.out.println("User " + getUserName() + " set new password successfully");
     }
 
     @Override
@@ -52,14 +53,6 @@ public class User implements AuthorizationInterface {
         User.countOfFollowerForAllUsers = countOfFollowerForAllUsers;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public void setMail(String mail) {
-        this.mail = mail;
-    }
-
     public void setCountOfFollowers(int countOfFollowers) {
         this.countOfFollowers = countOfFollowers;
     }
@@ -67,27 +60,15 @@ public class User implements AuthorizationInterface {
     @Override
     public String toString() {
         return "User{" +
-                "userName='" + userName + '\'' +
-                ", mail='" + mail + '\'' +
-                ", password='" + password + '\'' +
+                "userName='" + getUserName() + '\'' +
+                ", mail='" + getMail() + '\'' +
+                ", password='" + getPassword() + '\'' +
                 ", countOfFollowers=" + countOfFollowers +
                 '}';
     }
 
     public static int getCountOfFollowerForAllUsers() {
         return countOfFollowerForAllUsers;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public String getMail() {
-        return mail;
     }
 
     public int getCountOfFollowers() {
