@@ -29,13 +29,19 @@ public class User extends SocialMediaUser implements AuthorizationInterface {
 
     private boolean isPasswordCorrect(String password) {
         boolean isPasswordCorrect = getPassword().equals(password);
+        String message = isPasswordCorrect ? "Password is correct" : "Password is not correct";
+        System.out.println(message);
         return isPasswordCorrect;
     }
 
     @Override
     public void setNewPassword(String password) {
-        setPassword(password);
-        System.out.println("User " + getUserName() + " set new password successfully");
+        if (password.length() >= 10 && password.length() < 20) {
+            System.out.println("It is a perfect choice " + getUserName() + "! Password successfully change");
+            setPassword(password);
+        } else {
+            System.out.println("It's too short password, let's try again!");
+        }
     }
 
     @Override

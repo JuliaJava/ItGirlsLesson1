@@ -2,6 +2,8 @@ package ItGirlsSchool.models;
 
 import ItGirlsSchool.interfaces.AuthorizationInterface;
 
+import java.util.Scanner;
+
 public class Admin extends SocialMediaUser implements AuthorizationInterface {
 
     public Group group;
@@ -23,9 +25,21 @@ public class Admin extends SocialMediaUser implements AuthorizationInterface {
     }
 
     @Override
-    public String checkPassword(String password) {
-        boolean isPasswordCorrect = getPassword().equals(password);
-        return "Is password for admin correct - " + isPasswordCorrect;
+    public String checkPassword(String passwordOld) {
+        Scanner scanner = new Scanner(System.in);
+        String password;
+        boolean isAuthSuccessfull = true;
+        do {
+            System.out.println("Fill password: ");
+            password = scanner.nextLine();
+            isAuthSuccessfull = getPassword().equals(password);
+            if (isAuthSuccessfull) {
+                System.out.println("Password is correct");
+            } else {
+                System.out.println("Password is not correct, try again");
+            }
+        } while (!isAuthSuccessfull);
+        return "Password correct";
     }
 
 }
