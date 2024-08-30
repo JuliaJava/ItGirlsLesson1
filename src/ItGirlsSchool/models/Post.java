@@ -1,4 +1,4 @@
-package lesson3;
+package ItGirlsSchool.models;
 
 public class Post {
     public String content;

@@ -1,4 +1,4 @@
-package lesson3.interfaces;
+package ItGirlsSchool.interfaces;
 
 public interface AuthorizationInterface {
 
