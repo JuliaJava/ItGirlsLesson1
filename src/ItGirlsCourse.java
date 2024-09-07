@@ -14,36 +14,37 @@ public class ItGirlsCourse {
         zeroUser.addFollower();
         secondUser.addFollower();
         secondUser.addFollower();
-        System.out.println(zeroUser.getMail());
-        zeroUser.setUserName("sdfsdf");
-
-        System.out.println(zeroUser.getUserName());
         System.out.println(zeroUser);
-        secondUser.printDetails();
 
+        System.out.println("Admin " + admin.getUserName() + " has password " + admin.getPassword());
+
+        admin.setNewPassword("admin1");
+        System.out.println("Admin " + admin.getUserName() + "has password " + admin.getPassword());
+
+        System.out.println(zeroUser.checkPassword("34234"));
+        User.printCountOfFollowersForAllUsers();
+        secondUser.logIn();
+        secondUser.sendMessage("Привет!!!");
+        secondUser.logOut();
+        admin.logIn();
+        admin.sendMessage("Тоже привет!!!!");
+        admin.logOut();
 
         Post post1 = new Post("Hello, world!", zeroUser);
         Comment comment1 = new Comment("Nice post!", secondUser);
         post1.addLike();
+        post1.publishPost();
         post1.addLike();
-        post1.displayPost();
         comment1.displayComment();
 
-        System.out.println("Admin " + admin.getUserName() + "has password " + admin.getPassword());
-        zeroUser.setNewPassword("1");
-        zeroUser.printDetails();
-        admin.setNewPassword("admin1");
+        for (int i = 0; i < 5; i++) {
+            post1.addLike();
+        }
+
+        zeroUser.setNewPassword("2df000000000");
+
         System.out.println(admin.checkPassword("admin1"));
-        System.out.println(zeroUser.checkPassword("34234"));
-        User.printCountOfFollowersForAllUsers();
-
-        System.out.println();
-        System.out.println();
-
-        secondUser.sendMessage("Привет!!!");
-        admin.sendMessage("Всех удалю!!!");
 
     }
-
 
 }

@@ -4,9 +4,9 @@ import itGirlsSchool.interfaces.AuthorizationInterface;
 
 public class User extends SocialMediaUser implements AuthorizationInterface {
 
+    public Group group;
     public static int countOfFollowerForAllUsers;
     private int countOfFollowers;
-    private Group group;
 
     public User(String userName, String mail, String password) {
         super(userName, password, mail);
@@ -14,19 +14,13 @@ public class User extends SocialMediaUser implements AuthorizationInterface {
 
     @Override
     public void sendMessage(String message) {
-        System.out.println(getUserName() + " sent message: " + message);
+        System.out.println("Send message " + message);
     }
+
 
     public int addFollower() {
         countOfFollowerForAllUsers++;
         return ++countOfFollowers;
-    }
-
-    public void printDetails() {
-        System.out.println("User full name: " + getUserName());
-        System.out.println("Email: " + getMail());
-        System.out.println("Count of followers:" + countOfFollowers);
-        System.out.println("Password:" + getPassword());
     }
 
     public static void printCountOfFollowersForAllUsers() {
@@ -35,22 +29,24 @@ public class User extends SocialMediaUser implements AuthorizationInterface {
 
     private boolean isPasswordCorrect(String password) {
         boolean isPasswordCorrect = getPassword().equals(password);
+        String message = isPasswordCorrect ? "Password is correct" : "Password is not correct";
+        System.out.println(message);
         return isPasswordCorrect;
     }
 
     @Override
     public void setNewPassword(String password) {
-        setPassword(password);
-        System.out.println("User " + getUserName() + " set new password successfully");
+        if (password.length() >= 10 && password.length() < 20) {
+            System.out.println("It is a perfect choice " + getUserName() + "! Password successfully change");
+            setPassword(password);
+        } else {
+            System.out.println("It's too short password, let's try again!");
+        }
     }
 
     @Override
     public String checkPassword(String password) {
         return "Is password correct - " + isPasswordCorrect(password);
-    }
-
-    public static void setCountOfFollowerForAllUsers(int countOfFollowerForAllUsers) {
-        User.countOfFollowerForAllUsers = countOfFollowerForAllUsers;
     }
 
     public void setCountOfFollowers(int countOfFollowers) {
@@ -61,7 +57,7 @@ public class User extends SocialMediaUser implements AuthorizationInterface {
     public String toString() {
         return "User{" +
                 "userName='" + getUserName() + '\'' +
-                ", mail='" + getMail() + '\'' +
+                ", mail='" + getEmail() + '\'' +
                 ", password='" + getPassword() + '\'' +
                 ", countOfFollowers=" + countOfFollowers +
                 '}';
