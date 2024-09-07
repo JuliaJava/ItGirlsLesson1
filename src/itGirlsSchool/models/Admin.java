@@ -28,7 +28,7 @@ public class Admin extends SocialMediaUser implements AuthorizationInterface {
     public String checkPassword(String passwordOld) {
         Scanner scanner = new Scanner(System.in);
         String password;
-        boolean isAuthSuccessfull = true;
+        boolean isAuthSuccessfull;
         do {
             System.out.println("Fill password: ");
             password = scanner.nextLine();

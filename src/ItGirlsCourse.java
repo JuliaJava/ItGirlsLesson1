@@ -7,7 +7,7 @@ public class ItGirlsCourse {
 
     public static void main(String[] args) {
         User zeroUser = new User("Vitold", "vitold@gmail.com", "649854");
-        User secondUser = new User("Bonie", "bonie@gmail.com", "967865");
+        User secondUser = new User("Bonnie", "bonie@gmail.com", "967865");
 
         Admin admin = new Admin("Admin", "admin", "admin@admin.com");
         zeroUser.addFollower();
@@ -35,6 +35,7 @@ public class ItGirlsCourse {
         post1.addLike();
         post1.publishPost();
         post1.addLike();
+        post1.deletePost();
         comment1.displayComment();
 
         for (int i = 0; i < 5; i++) {
