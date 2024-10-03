@@ -1,7 +1,15 @@
+import itGirlsSchool.lesson7.ArrayListExample;
+import itGirlsSchool.lesson7.BubbleSorting;
+import itGirlsSchool.lesson7.HashMapExample;
+import itGirlsSchool.lesson8.InsertionSort;
+import itGirlsSchool.lesson8.MergeSort;
+import itGirlsSchool.lesson8.QuickSort;
+import itGirlsSchool.lesson7.StackExample;
+import itGirlsSchool.lesson8.SelectionSort;
 import itGirlsSchool.models.Admin;
-import itGirlsSchool.models.Comment;
-import itGirlsSchool.models.Post;
 import itGirlsSchool.models.User;
+
+import java.util.Arrays;
 
 public class ItGirlsCourse {
 
@@ -29,22 +37,6 @@ public class ItGirlsCourse {
         admin.logIn();
         admin.sendMessage("Тоже привет!!!!");
         admin.logOut();
-
-        Post post1 = new Post("Hello, world!", zeroUser);
-        Comment comment1 = new Comment("Nice post!", secondUser);
-        post1.addLike();
-        post1.publishPost();
-        post1.addLike();
-        post1.deletePost();
-        comment1.displayComment();
-
-        for (int i = 0; i < 5; i++) {
-            post1.addLike();
-        }
-
-        zeroUser.setNewPassword("2df000000000");
-
-        System.out.println(admin.checkPassword("admin1"));
 
     }
 
