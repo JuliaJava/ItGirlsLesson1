@@ -1,6 +1,11 @@
 package itGirlsSchool.models;
 
+import itGirlsSchool.exceptions.CustomException;
+import itGirlsSchool.exceptions.UserAlreadyExists;
 import itGirlsSchool.interfaces.AuthorizationInterface;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class User extends SocialMediaUser implements AuthorizationInterface {
 
@@ -8,8 +13,43 @@ public class User extends SocialMediaUser implements AuthorizationInterface {
     public static int countOfFollowerForAllUsers;
     private int countOfFollowers;
 
+    public static Map<String, User> users = new HashMap<>();
+
     public User(String userName, String mail, String password) {
         super(userName, password, mail);
+    }
+
+    public static User registerNewUser(String userName, String mail, String password) {
+
+            try {
+                validateUserName(userName);
+                validatePassword(password);
+            } catch (CustomException e) {
+                System.out.println("Can't create user " + userName + ". Error: " + e.getMessage());
+                return null;
+            } catch (UserAlreadyExists e) {
+                System.out.println("Can't register user " + userName + ". Error: " + e.getMessage());
+                return null;
+            }
+
+
+        User user = new User(userName, mail, password);
+        users.put(userName, user);
+        System.out.println("Create user " + userName);
+
+        return user;
+    }
+
+    private static void validatePassword(String password) throws CustomException {
+        if (password == null || password.length() < 6) {
+            throw new CustomException("Password too short");
+        }
+    }
+
+    private static void validateUserName(String userName) throws UserAlreadyExists {
+        if (users.containsKey(userName)) {
+            throw new UserAlreadyExists();
+        }
     }
 
     @Override
